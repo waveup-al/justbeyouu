@@ -1,0 +1,88 @@
+{
+  "projects": [
+    {
+      "id": "gmaps-agent",
+      "title": "AI Agent Google Maps",
+      "shortDescription": "AI Agent thu thập thông tin khách hàng bằng 1 click trên google maps - tự động gửi mail, SMS.",
+      "longDescription": "Hệ thống AI Agent tự động thu thập thông tin doanh nghiệp từ Google Maps, phân tích dữ liệu khách hàng tiềm năng và tự động gửi email, SMS marketing được cá nhân hóa.",
+      "badges": ["AI", "Automation", "Google Maps API", "Email Marketing"],
+      "status": "completed",
+      "demoUrl": "/api/demo/gmaps-search",
+      "repoUrl": "https://github.com/hieudev/gmaps-agent",
+      "screenshots": ["/images/projects/gmaps-1.jpg", "/images/projects/gmaps-2.jpg"],
+      "technologies": ["Python", "Google Maps API", "SendGrid", "Twilio"]
+    },
+    {
+      "id": "trade-assistant",
+      "title": "AI Trading Assistant",
+      "shortDescription": "Trợ lý Agent hỗ trợ phân tích đầu tư - trade.",
+      "longDescription": "Trợ lý AI thông minh phân tích thị trường tài chính, đưa ra khuyến nghị đầu tư và hỗ trợ quyết định trading dựa trên machine learning và technical analysis.",
+      "badges": ["AI", "Trading", "Machine Learning", "Financial Analysis"],
+      "status": "completed",
+      "demoUrl": "/api/demo/trade-report",
+      "repoUrl": "https://github.com/hieudev/trade-assistant",
+      "screenshots": ["/images/projects/trade-1.jpg", "/images/projects/trade-2.jpg"],
+      "technologies": ["Python", "TensorFlow", "Alpha Vantage API", "React"]
+    },
+    {
+      "id": "realtime-analytics",
+      "title": "Realtime Data Analytics",
+      "shortDescription": "Phân tích dữ liệu realtime gửi mail , quản lí pages facebook tự động",
+      "longDescription": "Hệ thống phân tích dữ liệu thời gian thực, tự động gửi báo cáo qua email và quản lý nhiều trang Facebook một cách tự động với AI-powered content management.",
+      "badges": ["Real-time", "Analytics", "Facebook API", "Automation"],
+      "status": "in-progress",
+      "demoUrl": null,
+      "repoUrl": "https://github.com/hieudev/realtime-analytics",
+      "screenshots": ["/images/projects/analytics-1.jpg"],
+      "technologies": ["Node.js", "Socket.io", "Facebook Graph API", "Redis"]
+    },
+    {
+      "id": "faceless-content",
+      "title": "Faceless Content Automation",
+      "shortDescription": "Workflow build Kênh tiktok facebook faceless đạt triệu view hoàn toàn tự động",
+      "longDescription": "Hệ thống tự động tạo và đăng tải nội dung faceless cho TikTok và Facebook, sử dụng AI để tạo video, thumbnail và caption, đạt hàng triệu lượt xem.",
+      "badges": ["Content Creation", "TikTok", "Facebook", "AI Video"],
+      "status": "completed",
+      "demoUrl": null,
+      "repoUrl": "https://github.com/hieudev/faceless-content",
+      "screenshots": ["/images/projects/faceless-1.jpg", "/images/projects/faceless-2.jpg"],
+      "technologies": ["Python", "OpenAI", "TikTok API", "Facebook API"]
+    },
+    {
+      "id": "amazon-scraper",
+      "title": "Amazon Data Scraper",
+      "shortDescription": "Tool extension - Amazon - Ecoms hỗ trợ scrape phân tích dữ liệu như coment , trang listing trên Amazon",
+      "longDescription": "Extension trình duyệt và tool phân tích dữ liệu Amazon, thu thập thông tin sản phẩm, reviews, comments và listing data để hỗ trợ nghiên cứu thị trường e-commerce.",
+      "badges": ["Web Scraping", "Amazon", "E-commerce", "Browser Extension"],
+      "status": "completed",
+      "demoUrl": "/api/admin/scrape",
+      "repoUrl": "https://github.com/hieudev/amazon-scraper",
+      "screenshots": ["/images/projects/amazon-1.jpg"],
+      "technologies": ["JavaScript", "Chrome Extension", "Puppeteer", "MongoDB"]
+    },
+    {
+      "id": "payroll-system",
+      "title": "Automated Payroll System",
+      "shortDescription": "Hệ thống chấm công tính lương tự động cho doanh nghiệp",
+      "longDescription": "Hệ thống quản lý nhân sự toàn diện với chấm công tự động, tính lương, quản lý nghỉ phép và báo cáo chi tiết cho doanh nghiệp vừa và nhỏ.",
+      "badges": ["HR Management", "Payroll", "Enterprise", "Automation"],
+      "status": "completed",
+      "demoUrl": null,
+      "repoUrl": "https://github.com/hieudev/payroll-system",
+      "screenshots": ["/images/projects/payroll-1.jpg", "/images/projects/payroll-2.jpg"],
+      "technologies": ["React", "Node.js", "PostgreSQL", "JWT"]
+    },
+    {
+      "id": "facebook-sales",
+      "title": "Facebook Sales Automation",
+      "shortDescription": "Kênh bán hàng facebook tự động đăng tải nội dung hình ảnh mockup chuyên nghiệp và chat bot RAG",
+      "longDescription": "Hệ thống bán hàng Facebook tự động với AI tạo mockup sản phẩm chuyên nghiệp, đăng tải nội dung theo lịch và chatbot RAG để tư vấn khách hàng 24/7.",
+      "badges": ["Facebook Marketing", "AI Mockup", "Chatbot", "RAG"],
+      "status": "in-progress",
+      "demoUrl": null,
+      "repoUrl": "https://github.com/hieudev/facebook-sales",
+      "screenshots": ["/images/projects/facebook-1.jpg"],
+      "technologies": ["Python", "Facebook API", "OpenAI", "LangChain"]
+    }
+  ]
+}

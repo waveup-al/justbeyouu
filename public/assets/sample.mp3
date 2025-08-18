@@ -1,0 +1,19 @@
+# Sample MP3 Placeholder
+
+This is a placeholder for the sample MP3 file.
+
+To add a real MP3 file:
+1. Replace this file with an actual MP3 audio file
+2. Name it `sample.mp3`
+3. Recommended: Use a short instrumental track or ambient music
+4. Keep file size under 5MB for better loading performance
+
+For development, you can use any royalty-free music or create a simple audio file.
+
+Example sources for royalty-free music:
+- Freesound.org
+- YouTube Audio Library
+- Pixabay Music
+- Incompetech.com
+
+Note: The music widget will work without this file, but won't play audio.
