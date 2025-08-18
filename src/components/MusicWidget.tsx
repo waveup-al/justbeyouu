@@ -120,7 +120,7 @@ export default function MusicWidget() {
       transition={{ duration: 0.8, delay: 0.3 }}
       className={`fixed z-40 ${
         isMobile 
-          ? 'top-2 right-2 left-auto transform-none' 
+          ? 'top-2 left-1/2 transform -translate-x-1/2' 
           : 'top-4 left-1/2 transform -translate-x-1/2'
       }`}
     >
