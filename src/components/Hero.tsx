@@ -249,14 +249,7 @@ export default function Hero({ onNavigate }: HeroProps) {
           </motion.div>
         </button>
 
-        <a
-          href="/assets/CV-Nguyen-Cong-Hieu.pdf"
-          download
-          className="group flex items-center gap-2 glass border border-warm-amber/50 px-8 py-3 rounded-lg font-semibold text-warm-amber hover:bg-warm-amber/10 hover:scale-105 transition-all duration-300"
-        >
-          <Download size={20} />
-          {t('about.download.cv')}
-        </a>
+
       </motion.div>
 
       {/* Scroll Indicator */}
