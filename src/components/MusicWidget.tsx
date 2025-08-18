@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Play, Pause, Volume2, VolumeX, SkipBack, SkipForward } from 'lucide-react'
 import { useIsMobile } from '@/hooks/useIsMobile'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function MusicWidget() {
   const [isPlaying, setIsPlaying] = useState(false)
@@ -15,6 +16,7 @@ export default function MusicWidget() {
   const [isClient, setIsClient] = useState(false)
   const audioRef = useRef<HTMLAudioElement>(null)
   const isMobile = useIsMobile()
+  const { t } = useLanguage()
 
   const currentTrack = {
     title: 'Good News',
@@ -156,7 +158,7 @@ export default function MusicWidget() {
               className={`rounded-full bg-gradient-to-r from-neon-cyan to-neon-purple text-dark-bg hover:scale-105 transition-all duration-300 focus-visible:focus ${
                 isMobile ? 'p-1.5' : 'p-2'
               }`}
-              aria-label={isPlaying ? 'Tạm dừng' : 'Phát nhạc'}
+              aria-label={isPlaying ? t('music.pause') : t('music.play')}
             >
               {isPlaying ? <Pause size={isMobile ? 12 : 14} /> : <Play size={isMobile ? 12 : 14} />}
             </button>
@@ -169,8 +171,8 @@ export default function MusicWidget() {
                     ? 'bg-neon-purple/20 text-neon-purple' 
                     : 'hover:bg-white/10 text-gray-400'
                 }`}
-                aria-label={isLooping ? 'Tắt vòng lặp' : 'Bật vòng lặp'}
-                title={isLooping ? 'Tắt vòng lặp' : 'Bật vòng lặp'}
+                aria-label={isLooping ? t('music.loop.off') : t('music.loop.on')}
+                title={isLooping ? t('music.loop.off') : t('music.loop.on')}
               >
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/>
@@ -185,7 +187,7 @@ export default function MusicWidget() {
             className={`rounded-full hover:bg-white/10 transition-colors focus-visible:focus ${
               isMobile ? 'p-1' : 'p-1.5'
             }`}
-            aria-label={isMuted ? 'Bật âm thanh' : 'Tắt âm thanh'}
+            aria-label={isMuted ? t('music.unmute') : t('music.mute')}
           >
             {isMuted ? <VolumeX size={isMobile ? 10 : 12} /> : <Volume2 size={isMobile ? 10 : 12} />}
           </button>

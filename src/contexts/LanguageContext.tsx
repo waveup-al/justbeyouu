@@ -27,6 +27,8 @@ const translations = {
     'hero.name': 'Nguyễn Công Hiếu',
     'hero.title': 'AI Agent & Automation Developer',
     'hero.subtitle': 'Một người thích <strong style="color: #f59e0b; font-weight: 700;">học mỗi ngày</strong> — AI Agent · Automation · Data',
+    'hero.description': 'Chuyên gia phát triển <span class="text-neon-cyan neon-text">AI Agent</span>, <span class="text-neon-purple neon-text">Automation</span> và <span class="text-warm-amber neon-text">Data Analytics</span>',
+    'hero.scroll': 'Cuộn xuống để khám phá',
     'hero.cta.contact': 'Liên hệ với tôi',
     'hero.cta.projects': 'Xem dự án',
     
@@ -42,9 +44,12 @@ const translations = {
     'about.experience': 'Đang học hỏi mỗi ngày',
     'about.skills.title': 'Kỹ năng chuyên môn',
     'about.interests.title': 'Sở thích',
-    'about.interests.guitar': 'Chơi guitar acoustic và fingerstyle',
-    'about.interests.travel': 'Khám phá văn hóa và ẩm thực địa phương',
-    'about.interests.beer': 'Thưởng thức craft beer và bia thủ công',
+    'about.interests.guitar.label': 'Guitar',
+    'about.interests.guitar.description': 'Chơi guitar acoustic và fingerstyle',
+    'about.interests.travel.label': 'Du lịch',
+    'about.interests.travel.description': 'Khám phá văn hóa và ẩm thực địa phương',
+    'about.interests.beer.label': 'Bia',
+    'about.interests.beer.description': 'Thưởng thức craft beer và bia thủ công',
     'about.download.cv': 'Tải CV',
     
     // Projects Section
@@ -77,9 +82,11 @@ const translations = {
     'contact.form.demo.description': 'Form này hiện đang ở chế độ demo. Tin nhắn sẽ được mô phỏng thành công.',
     'contact.info.title': 'Thông tin liên hệ',
     'contact.info.email': 'alwaveup@gmail.com',
-    'contact.info.phone': '0888846467',
+    'contact.info.phone.value': '0888846467',
     'contact.info.address': 'Đà Nẵng, Việt Nam',
+    'contact.info.phone.label': 'Điện thoại',
     'contact.info.address.label': 'Địa chỉ',
+    'contact.tip': '💡 <strong>Tip:</strong> Phản hồi nhanh nhất qua email hoặc LinkedIn',
     'contact.social.title': 'Kết nối với tôi',
     
     // Easter Egg
@@ -119,8 +126,19 @@ const translations = {
 
      // Common
      'common.loading': 'Đang tải...',
-     'common.error': 'Có lỗi xảy ra',
+    'common.error': 'Có lỗi xảy ra',
     'common.close': 'Đóng',
+    
+    // Music Widget
+    'music.play': 'Phát nhạc',
+    'music.pause': 'Tạm dừng',
+    'music.loop.on': 'Bật vòng lặp',
+    'music.loop.off': 'Tắt vòng lặp',
+    'music.mute': 'Tắt âm thanh',
+    'music.unmute': 'Bật âm thanh',
+    
+    // Fox Mascot
+    'fox.tooltip': 'Click để mở Easter Egg!',
   },
   en: {
     // Navigation
@@ -136,6 +154,8 @@ const translations = {
     'hero.name': 'Nguyen Cong Hieu',
     'hero.title': 'AI Agent & Automation Developer',
     'hero.subtitle': 'A person who loves <strong style="color: #f59e0b; font-weight: 700;">learning every day</strong> — AI Agent · Automation · Data',
+    'hero.description': 'Specialist in <span class="text-neon-cyan neon-text">AI Agent</span>, <span class="text-neon-purple neon-text">Automation</span> and <span class="text-warm-amber neon-text">Data Analytics</span>',
+    'hero.scroll': 'Scroll down to explore',
     'hero.cta.contact': 'Contact me',
     'hero.cta.projects': 'View projects',
     
@@ -151,9 +171,12 @@ const translations = {
     'about.experience': 'Learning every day',
     'about.skills.title': 'Professional Skills',
     'about.interests.title': 'Interests',
-    'about.interests.guitar': 'Playing acoustic guitar and fingerstyle',
-    'about.interests.travel': 'Exploring local culture and cuisine',
-    'about.interests.beer': 'Enjoying craft beer and artisanal brews',
+    'about.interests.guitar.label': 'Guitar',
+    'about.interests.guitar.description': 'Playing acoustic guitar and fingerstyle',
+    'about.interests.travel.label': 'Travel',
+    'about.interests.travel.description': 'Exploring local culture and cuisine',
+    'about.interests.beer.label': 'Beer',
+    'about.interests.beer.description': 'Enjoying craft beer and artisanal brews',
     'about.download.cv': 'Download CV',
     
     // Projects Section
@@ -186,9 +209,11 @@ const translations = {
     'contact.form.demo.description': 'This form is currently in demo mode. Messages will be simulated successfully.',
     'contact.info.title': 'Contact Information',
     'contact.info.email': 'alwaveup@gmail.com',
-    'contact.info.phone': '0888846467',
+    'contact.info.phone.value': '0888846467',
     'contact.info.address': 'Da Nang, Vietnam',
+    'contact.info.phone.label': 'Phone',
     'contact.info.address.label': 'Address',
+    'contact.tip': '💡 <strong>Tip:</strong> Fastest response via email or LinkedIn',
     'contact.social.title': 'Connect with me',
     
     // Easter Egg
@@ -228,8 +253,19 @@ const translations = {
 
      // Common
      'common.loading': 'Loading...',
-     'common.error': 'An error occurred',
+    'common.error': 'An error occurred',
     'common.close': 'Close',
+    
+    // Music Widget
+    'music.play': 'Play music',
+    'music.pause': 'Pause',
+    'music.loop.on': 'Enable loop',
+    'music.loop.off': 'Disable loop',
+    'music.mute': 'Mute',
+    'music.unmute': 'Unmute',
+    
+    // Fox Mascot
+    'fox.tooltip': 'Click to open Easter Egg!',
   }
 }
 

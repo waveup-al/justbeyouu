@@ -17,9 +17,9 @@ export default function AboutSection() {
   ]
 
   const interests = [
-    { icon: Guitar, label: 'Guitar', description: 'Chơi guitar acoustic và fingerstyle' },
-    { icon: Plane, label: 'Travel', description: 'Khám phá văn hóa và ẩm thực địa phương' },
-    { icon: Beer, label: 'Beer', description: 'Thưởng thức craft beer và bia thủ công' },
+    { icon: Guitar, label: t('about.interests.guitar.label'), description: t('about.interests.guitar.description') },
+    { icon: Plane, label: t('about.interests.travel.label'), description: t('about.interests.travel.description') },
+    { icon: Beer, label: t('about.interests.beer.label'), description: t('about.interests.beer.description') },
   ]
 
   const socialLinks = [

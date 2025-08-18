@@ -35,7 +35,7 @@ export default function ContactSection() {
     },
     {
       icon: Phone,
-      label: 'Điện thoại',
+      label: t('contact.info.phone.label'),
       value: '0888846467',
       href: 'tel:0888846467',
       color: 'text-neon-purple'
@@ -195,7 +195,7 @@ export default function ContactSection() {
             
             <div className="mt-6 p-4 bg-teal-accent/10 border border-teal-accent/30 rounded-lg">
               <p className="text-teal-accent text-sm">
-                💡 <strong>Tip:</strong> Phản hồi nhanh nhất qua email hoặc LinkedIn
+                {t('contact.tip')}
               </p>
             </div>
           </div>

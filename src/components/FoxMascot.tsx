@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { useState } from 'react'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 interface FoxMascotProps {
   onClick: () => void
@@ -9,6 +10,7 @@ interface FoxMascotProps {
 
 export default function FoxMascot({ onClick }: FoxMascotProps) {
   const [isHovered, setIsHovered] = useState(false)
+  const { t } = useLanguage()
 
   return (
     <motion.div
@@ -31,7 +33,7 @@ export default function FoxMascot({ onClick }: FoxMascotProps) {
         className="absolute bottom-full right-0 mb-4 pointer-events-none"
       >
         <div className="glass-dark px-3 py-2 rounded-lg text-sm whitespace-nowrap border border-warm-amber/30">
-          <span className="text-warm-amber">🎸 Click để mở Easter Egg!</span>
+          <span className="text-warm-amber">🎸 {t('fox.tooltip')}</span>
         </div>
       </motion.div>
 

@@ -224,21 +224,7 @@ export default function Hero({ onNavigate }: HeroProps) {
         transition={{ duration: 0.8, delay: 0.2 }}
         className="text-xl text-gray-300 mb-8 font-light"
       >
-        {language === 'vi' ? (
-          <>
-            Chuyên gia phát triển{' '}
-            <span className="text-neon-cyan neon-text">AI Agent</span>,{' '}
-            <span className="text-neon-purple neon-text">Automation</span> và{' '}
-            <span className="text-warm-amber neon-text">Data Analytics</span>
-          </>
-        ) : (
-          <>
-            Specialist in{' '}
-            <span className="text-neon-cyan neon-text">AI Agent</span>,{' '}
-            <span className="text-neon-purple neon-text">Automation</span> and{' '}
-            <span className="text-warm-amber neon-text">Data Analytics</span>
-          </>
-        )}
+        <span dangerouslySetInnerHTML={{ __html: t('hero.description') }} />
       </motion.p>
 
       {/* CTA Buttons */}
@@ -292,7 +278,7 @@ export default function Hero({ onNavigate }: HeroProps) {
           />
         </motion.div>
         <p className="text-gray-400 text-sm mt-2">
-          {language === 'vi' ? 'Cuộn xuống để khám phá' : 'Scroll down to explore'}
+          {t('hero.scroll')}
         </p>
       </motion.div>
     </div>

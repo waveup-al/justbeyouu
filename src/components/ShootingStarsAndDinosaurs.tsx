@@ -12,31 +12,31 @@ const ShootingStarsAndDinosaurs = () => {
   const [starCounter, setStarCounter] = useState(0)
   const [dinoCounter, setDinoCounter] = useState(0)
 
-  // Tạo sao băng với tần suất thấp (mỗi 8-15 giây)
+  // Create shooting stars with low frequency (every 8-15 seconds)
   useEffect(() => {
     const createShootingStar = () => {
       if (typeof window === 'undefined') return
       
       const id = starCounter
       const startX = -50
-      const startY = Math.random() * (window.innerHeight * 0.3) // Chỉ ở phần trên màn hình
+      const startY = Math.random() * (window.innerHeight * 0.3) // Only in the upper part of the screen
       const endX = window.innerWidth + 100
       const endY = startY + 100
       
       setShootingStars(prev => [...prev, { id, startX, startY, endX, endY }])
       setStarCounter(prev => prev + 1)
       
-      // Xóa sao băng sau khi animation hoàn thành
+      // Remove shooting star after animation completes
       setTimeout(() => {
         setShootingStars(prev => prev.filter(star => star.id !== id))
       }, 3000)
     }
 
-    const interval = setInterval(createShootingStar, Math.random() * 7000 + 8000) // 8-15 giây
+    const interval = setInterval(createShootingStar, Math.random() * 7000 + 8000) // 8-15 seconds
     return () => clearInterval(interval)
   }, [starCounter])
 
-  // Tạo khủng long bay qua với tần suất thấp (mỗi 12-20 giây)
+  // Create dinosaurs flying by with low frequency (every 12-20 seconds)
   useEffect(() => {
     const createDinosaur = () => {
       if (typeof window === 'undefined') return
@@ -44,26 +44,26 @@ const ShootingStarsAndDinosaurs = () => {
       const id = dinoCounter
       const direction = 'left'
       const startX = -150
-      const y = Math.random() * (window.innerHeight * 0.4) + window.innerHeight * 0.1 // Phần trên-giữa màn hình
+      const y = Math.random() * (window.innerHeight * 0.4) + window.innerHeight * 0.1 // Upper-middle part of the screen
       const variants: Dinosaur['variant'][] = ['ptero', 'stego', 'raptor']
       const variant = variants[Math.floor(Math.random() * variants.length)]
       
       setDinosaurs(prev => [...prev, { id, startX, y, direction, variant }])
       setDinoCounter(prev => prev + 1)
       
-      // Xóa khủng long sau khi animation hoàn thành
+      // Remove dinosaur after animation completes
       setTimeout(() => {
         setDinosaurs(prev => prev.filter(dino => dino.id !== id))
       }, 8000)
     }
 
-    const interval = setInterval(createDinosaur, Math.random() * 8000 + 12000) // 12-20 giây
+    const interval = setInterval(createDinosaur, Math.random() * 8000 + 12000) // 12-20 seconds
     return () => clearInterval(interval)
   }, [dinoCounter])
 
   return (
     <div className="fixed inset-0 pointer-events-none z-[2] overflow-hidden">
-      {/* Sao băng với hiệu ứng ấn tượng */}
+      {/* Shooting stars with impressive effects */}
       <AnimatePresence>
         {shootingStars.map((star) => (
           <motion.div
@@ -90,7 +90,7 @@ const ShootingStarsAndDinosaurs = () => {
               ease: "easeOut"
             }}
           >
-            {/* Hạt sáng rải rác */}
+            {/* Scattered light particles */}
             {[...Array(8)].map((_, i) => (
               <motion.div
                 key={i}
@@ -112,7 +112,7 @@ const ShootingStarsAndDinosaurs = () => {
               />
             ))}
             
-            {/* Đuôi sao băng chính với gradient rainbow */}
+            {/* Main shooting star tail with rainbow gradient */}
             <motion.svg
               width="120"
               height="8"
@@ -148,7 +148,7 @@ const ShootingStarsAndDinosaurs = () => {
               />
             </motion.svg>
             
-            {/* Nhân sao với hiệu ứng nổ */}
+            {/* Star core with explosion effect */}
             <motion.div
               className="relative"
               animate={{
@@ -175,7 +175,7 @@ const ShootingStarsAndDinosaurs = () => {
               </svg>
             </motion.div>
             
-            {/* Vòng sáng xung quanh */}
+            {/* Glowing ring around */}
             <motion.div
               className="absolute w-8 h-8 border-2 border-cyan-400 rounded-full -left-4 -top-4"
               animate={{
@@ -193,7 +193,7 @@ const ShootingStarsAndDinosaurs = () => {
         ))}
       </AnimatePresence>
 
-      {/* Khủng long Minecraft */}
+      {/* Minecraft dinosaurs */}
       <AnimatePresence>
         {dinosaurs.map((dino) => (
           <motion.div
