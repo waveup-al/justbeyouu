@@ -102,14 +102,16 @@ export default function Home() {
         </section>
       </main>
 
-      {/* Fox Mascot */}
-      <FoxMascot onClick={() => setShowEasterEgg(true)} />
+      {/* Fox Mascot - Hidden on mobile */}
+      {!isMobile && <FoxMascot onClick={() => setShowEasterEgg(true)} />}
 
-      {/* Easter Egg Panel */}
-      <EasterEggPanel 
-        isOpen={showEasterEgg} 
-        onClose={() => setShowEasterEgg(false)} 
-      />
+      {/* Easter Egg Panel - Hidden on mobile */}
+      {!isMobile && (
+        <EasterEggPanel 
+          isOpen={showEasterEgg} 
+          onClose={() => setShowEasterEgg(false)} 
+        />
+      )}
     </>
   )
 }
