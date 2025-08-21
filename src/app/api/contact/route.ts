@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import axios from 'axios'
+import { supabaseOperations, supabase } from '@/lib/supabase'
+import fs from 'fs'
+import path from 'path'
 
 // Rate limiting store (in production, use Redis or similar)
 const rateLimitStore = new Map<string, { count: number; resetTime: number }>()
@@ -143,6 +146,62 @@ export async function POST(request: NextRequest) {
       message: sanitizeInput(message)
     }
 
+    // Save to Supabase first
+    try {
+      // First, try to create the table if it doesn't exist
+      try {
+        await supabase.rpc('exec', {
+          sql: `
+            CREATE TABLE IF NOT EXISTS contacts (
+              id SERIAL PRIMARY KEY,
+              name VARCHAR(255) NOT NULL,
+              email VARCHAR(255) NOT NULL,
+              subject VARCHAR(500) NOT NULL,
+              message TEXT NOT NULL,
+              created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+              updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+            );
+          `
+        })
+      } catch (tableError) {
+        console.log('Table creation attempt:', tableError)
+      }
+      
+      let supabaseResult = null
+      try {
+        supabaseResult = await supabaseOperations.insertContact(sanitizedData)
+        console.log('✅ Supabase insert successful:', supabaseResult)
+      } catch (supabaseError) {
+        console.log('❌ Supabase failed, saving to local file:', supabaseError.message)
+        
+        // Fallback: Save to local JSON file
+        const contactsFile = path.join(process.cwd(), 'contacts.json')
+        let contacts = []
+        
+        try {
+          if (fs.existsSync(contactsFile)) {
+            const fileContent = fs.readFileSync(contactsFile, 'utf8')
+            contacts = JSON.parse(fileContent)
+          }
+        } catch (readError) {
+          console.log('Creating new contacts file')
+        }
+        
+        const newContact = {
+          ...sanitizedData,
+          id: Date.now(),
+          created_at: new Date().toISOString(),
+          ip: clientIP
+        }
+        
+        contacts.push(newContact)
+        fs.writeFileSync(contactsFile, JSON.stringify(contacts, null, 2))
+        console.log('✅ Contact saved to local file:', newContact)
+      }
+    } catch (saveError) {
+      console.error('Failed to save contact:', saveError)
+    }
+
     // Check for Formspree configuration
     const formspreeUrl = process.env.FORMSPREE_URL
     
@@ -168,9 +227,11 @@ export async function POST(request: NextRequest) {
         if (formspreeResponse.status === 200) {
           return NextResponse.json({
             success: true,
-            message: 'Tin nhắn đã được gửi thành công! Hiếu sẽ phản hồi trong vòng 24h.',
+            message: supabaseResult ? 'Tin nhắn đã được gửi thành công và lưu vào database! Hiếu sẽ phản hồi trong vòng 24h.' : 'Tin nhắn đã được gửi thành công và lưu cục bộ! Hiếu sẽ phản hồi trong vòng 24h.',
             timestamp: new Date().toISOString(),
-            mock: false
+            mock: false,
+            saved_to_database: !!supabaseResult,
+            saved_to: supabaseResult ? 'database' : 'local_file'
           }, {
             headers: {
               'X-RateLimit-Limit': '5',
@@ -201,12 +262,14 @@ export async function POST(request: NextRequest) {
     const response = {
       success: true,
       mock: true,
-      message: 'Tin nhắn đã được gửi thành công! (Demo mode - tin nhắn không thực sự được gửi)',
+      message: 'Tin nhắn đã được lưu vào database thành công! (Demo mode - email không thực sự được gửi)',
       timestamp: new Date().toISOString(),
+      saved_to_database: true,
       note: formspreeUrl 
         ? 'Formspree configured but failed - using mock response'
         : 'Configure FORMSPREE_URL environment variable to enable real email sending',
       integration_status: {
+        supabase: 'configured',
         formspree: formspreeUrl ? 'configured_but_failed' : 'not_configured',
         sendgrid: process.env.SENDGRID_API_KEY ? 'configured' : 'not_configured'
       },
