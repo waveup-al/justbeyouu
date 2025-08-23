@@ -147,6 +147,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Save to Supabase first
+    let supabaseResult = null
     try {
       // First, try to create the table if it doesn't exist
       try {
@@ -167,7 +168,6 @@ export async function POST(request: NextRequest) {
         console.log('Table creation attempt:', tableError)
       }
       
-      let supabaseResult = null
       try {
         supabaseResult = await supabaseOperations.insertContact(sanitizedData)
         console.log('✅ Supabase insert successful:', supabaseResult)
