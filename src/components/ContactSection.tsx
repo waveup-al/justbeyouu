@@ -193,11 +193,7 @@ export default function ContactSection() {
               })}
             </div>
             
-            <div className="mt-6 p-4 bg-teal-accent/10 border border-teal-accent/30 rounded-lg">
-              <p className="text-teal-accent text-sm">
-                {t('contact.tip')}
-              </p>
-            </div>
+
           </div>
         </motion.div>
 
@@ -306,11 +302,7 @@ export default function ContactSection() {
               </button>
             </form>
             
-            <div className="mt-6 p-4 bg-warm-amber/10 border border-warm-amber/30 rounded-lg">
-              <p className="text-warm-amber text-sm">
-                🔧 <strong>{t('contact.form.demo.title')}:</strong> {t('contact.form.demo.description')}
-              </p>
-            </div>
+
           </div>
         </motion.div>
       </div>

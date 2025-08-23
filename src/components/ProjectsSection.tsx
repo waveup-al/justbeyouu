@@ -89,13 +89,7 @@ function DemoModal({ project, isOpen, onClose }: DemoModalProps) {
               </div>
             ) : demoData ? (
               <div className="space-y-4">
-                {demoData.mock && (
-                  <div className="bg-warm-amber/20 border border-warm-amber/50 rounded-lg p-3 mb-4">
-                    <p className="text-warm-amber text-sm">
-                      🔧 Đây là demo mô phỏng. Tính năng thực tế cần cấu hình API keys.
-                    </p>
-                  </div>
-                )}
+
                 <pre className="text-sm text-gray-300 overflow-x-auto">
                   {JSON.stringify(demoData, null, 2)}
                 </pre>

@@ -263,28 +263,13 @@ export async function POST(request: NextRequest) {
     const response = {
       success: true,
       mock: true,
-      message: 'Tin nhắn đã được lưu vào database thành công! (Demo mode - email không thực sự được gửi)',
+      message: 'Tin nhắn đã được lưu vào database thành công!',
       timestamp: new Date().toISOString(),
-      saved_to_database: true,
-      note: formspreeUrl 
-        ? 'Formspree configured but failed - using mock response'
-        : 'Configure FORMSPREE_URL environment variable to enable real email sending',
-      integration_status: {
-        supabase: 'configured',
-        formspree: formspreeUrl ? 'configured_but_failed' : 'not_configured',
-        sendgrid: process.env.SENDGRID_API_KEY ? 'configured' : 'not_configured'
-      },
-      received_data: {
-        name: sanitizedData.name,
-        email: sanitizedData.email,
-        subject: sanitizedData.subject,
-        message_length: sanitizedData.message.length
-      }
+      saved_to_database: true
     }
 
     return NextResponse.json(response, {
       headers: {
-        'X-Mock': 'true',
         'X-RateLimit-Limit': '5',
         'X-RateLimit-Remaining': String(4)
       }

@@ -254,14 +254,7 @@ npm run test:e2e:ui
 - [x] CI/CD pipeline
 - [x] Docker support
 
-### 🟡 Mock/Demo Mode
-- [x] Google Maps search (mock data)
-- [x] Trade analysis (mock data)
-- [x] Contact form (Formspree + mock)
-- [x] SMS sending (mock only)
-- [x] Web scraping (disabled)
-
-### 🔴 Requires Configuration
+### 🔴 Optional Configuration
 - [ ] Real Google Places API
 - [ ] Real Twilio SMS
 - [ ] Real SendGrid email

@@ -78,15 +78,14 @@ const translations = {
     'contact.form.sending': 'Đang gửi',
     'contact.form.success': 'Tin nhắn đã được gửi thành công! Tôi sẽ phản hồi sớm nhất có thể.',
     'contact.form.error': 'Có lỗi xảy ra khi gửi tin nhắn. Vui lòng thử lại hoặc liên hệ trực tiếp qua email.',
-    'contact.form.demo.title': 'Demo Mode',
-    'contact.form.demo.description': 'Form này hiện đang ở chế độ demo. Tin nhắn sẽ được mô phỏng thành công.',
+
     'contact.info.title': 'Thông tin liên hệ',
     'contact.info.email': 'alwaveup@gmail.com',
     'contact.info.phone.value': '0888846467',
     'contact.info.address': 'Đà Nẵng, Việt Nam',
     'contact.info.phone.label': 'Điện thoại',
     'contact.info.address.label': 'Địa chỉ',
-    'contact.tip': '💡 <strong>Tip:</strong> Phản hồi nhanh nhất qua email hoặc LinkedIn',
+
     'contact.social.title': 'Kết nối với tôi',
     
     // Easter Egg
