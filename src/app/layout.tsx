@@ -64,7 +64,7 @@ export default function RootLayout({
               url: 'https://hieu-portfolio.vercel.app',
               sameAs: [
                 'https://github.com/hieudev',
-                'https://linkedin.com/in/hieudev',
+                'https://www.linkedin.com/in/hi%E1%BA%BFu-nguy%E1%BB%85n-c%C3%B4ng-324394361/',
               ],
               knowsAbout: ['AI Agent', 'Automation', 'Data Analysis', 'Full Stack Development'],
             }),

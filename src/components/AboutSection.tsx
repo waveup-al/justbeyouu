@@ -24,7 +24,7 @@ export default function AboutSection() {
 
   const socialLinks = [
     { icon: Github, label: 'GitHub', url: 'https://github.com/hieudev', color: 'text-white' },
-    { icon: Linkedin, label: 'LinkedIn', url: 'https://www.linkedin.com/in/hi%E1%BA%BFu-nguy%E1%BB%85n-c%C3%B4ng-324394361/', color: 'text-blue-400' },
+    { icon: Linkedin, label: 'LinkedIn', url: 'https://www.linkedin.com/in/nguyen-cong-hieu/', color: 'text-blue-400' },
     { icon: Mail, label: 'Email', url: 'mailto:alwaveup@gmail.com', color: 'text-red-400' },
     { icon: MessageCircle, label: 'Facebook', url: 'https://www.facebook.com/hieu.nguyen.784537/?locale=vi_VN', color: 'text-blue-500' },
     { icon: Youtube, label: 'YouTube', url: 'https://www.youtube.com/@mrkent6868', color: 'text-red-500' },
