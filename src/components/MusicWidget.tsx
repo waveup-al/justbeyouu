@@ -21,7 +21,7 @@ export default function MusicWidget() {
   const currentTrack = {
     title: 'Good News',
     artist: 'Mac Miller',
-    src: '/assets/Mac Miller - Good News.mp3'
+    src: '/music/Mac Miller - Good News.mp3'
   }
 
   // Prevent hydration mismatch
