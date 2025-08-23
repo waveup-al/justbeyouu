@@ -28,7 +28,7 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNmenVqcm5
 ### Bước 1: Truy cập Vercel Dashboard
 1. Đi tới [vercel.com](https://vercel.com)
 2. Đăng nhập vào tài khoản của bạn
-3. Tìm và click vào project **justbeyouu** hoặc **alwaveup**
+3. Tìm và click vào project **justbeyouu** (Project ID: `prj_0yJSjUqgb2uRZHkEDuVa5MSqHE4s`) hoặc **alwaveup**
 
 ### Bước 2: Vào Settings
 1. Trong project dashboard, click tab **Settings**
