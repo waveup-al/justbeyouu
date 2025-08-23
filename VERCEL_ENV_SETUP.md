@@ -45,7 +45,7 @@ Thêm từng biến một:
 
 #### Biến 2: NEXT_PUBLIC_SUPABASE_ANON_KEY
 - **Name**: `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-- **Value**: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNmenVqcm5ldnBhdW1qbHpwd25kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU3NTk0MzksImV4cCI6MjA3MTMzNTQzOX0.qJZvvKQN5z5z5z5z5z5z5z5z5z5z5z5z5z5z5z5z5z5`
+- **Value**: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNmenVqcm5ldnBhdW1qbHpwd25kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU3NTk0MzksImV4cCI6MjA3MTMzNTQzOX0.CQCq709bywN-60hJ8ITYl2MV1YZoU_C3AIEJvs2t_wo`
 - **Environment**: Chọn **Production**, **Preview**, và **Development**
 - Click **Save**
 
