@@ -172,7 +172,8 @@ export async function POST(request: NextRequest) {
         supabaseResult = await supabaseOperations.insertContact(sanitizedData)
         console.log('✅ Supabase insert successful:', supabaseResult)
       } catch (supabaseError) {
-        console.log('❌ Supabase failed, saving to local file:', supabaseError.message)
+        const errorMessage = supabaseError instanceof Error ? supabaseError.message : String(supabaseError)
+        console.log('❌ Supabase failed, saving to local file:', errorMessage)
         
         // Fallback: Save to local JSON file
         const contactsFile = path.join(process.cwd(), 'contacts.json')
