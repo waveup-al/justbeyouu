@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Production Debug</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: #1a1a1a; color: #fff; }
+        .container { max-width: 800px; margin: 0 auto; }
+        .section { margin: 20px 0; padding: 15px; border: 1px solid #333; border-radius: 5px; }
+        .success { background: #1a4a1a; border-color: #4a8a4a; }
+        .error { background: #4a1a1a; border-color: #8a4a4a; }
+        .info { background: #1a1a4a; border-color: #4a4a8a; }
+        button { padding: 10px 20px; margin: 5px; background: #333; color: #fff; border: 1px solid #555; border-radius: 3px; cursor: pointer; }
+        button:hover { background: #555; }
+        pre { background: #000; padding: 10px; border-radius: 3px; overflow-x: auto; }
+        input, textarea { width: 100%; padding: 8px; margin: 5px 0; background: #333; color: #fff; border: 1px solid #555; border-radius: 3px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 Production Debug Tool</h1>
+        
+        <div class="section info">
+            <h3>Environment Check</h3>
+            <div id="env-check">Checking environment variables...</div>
+            <button onclick="checkEnvironment()">Recheck Environment</button>
+        </div>
+
+        <div class="section info">
+            <h3>API Test</h3>
+            <form id="contact-form">
+                <input type="text" id="name" placeholder="Name" value="Debug Test" required>
+                <input type="email" id="email" placeholder="Email" value="debug@test.com" required>
+                <input type="text" id="subject" placeholder="Subject" value="Debug Test Subject" required>
+                <textarea id="message" placeholder="Message" rows="3" required>This is a debug test message from production debug tool.</textarea>
+                <button type="submit">Test Contact API</button>
+            </form>
+            <div id="api-result"></div>
+        </div>
+
+        <div class="section info">
+            <h3>Network Info</h3>
+            <div id="network-info">Loading network information...</div>
+            <button onclick="checkNetwork()">Refresh Network Info</button>
+        </div>
+
+        <div class="section info">
+            <h3>Console Logs</h3>
+            <div id="console-logs"></div>
+            <button onclick="clearLogs()">Clear Logs</button>
+        </div>
+    </div>
+
+    <script>
+        // Capture console logs
+        const originalLog = console.log;
+        const originalError = console.error;
+        const logs = [];
+
+        function addLog(type, message) {
+            const timestamp = new Date().toLocaleTimeString();
+            logs.push({ type, message, timestamp });
+            updateLogDisplay();
+        }
+
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            addLog('log', args.join(' '));
+        };
+
+        console.error = function(...args) {
+            originalError.apply(console, args);
+            addLog('error', args.join(' '));
+        };
+
+        function updateLogDisplay() {
+            const logDiv = document.getElementById('console-logs');
+            logDiv.innerHTML = logs.map(log => 
+                `<div style="color: ${log.type === 'error' ? '#ff6b6b' : '#4ecdc4'}">
+                    [${log.timestamp}] ${log.type.toUpperCase()}: ${log.message}
+                </div>`
+            ).join('');
+        }
+
+        function clearLogs() {
+            logs.length = 0;
+            updateLogDisplay();
+        }
+
+        function checkEnvironment() {
+            const envDiv = document.getElementById('env-check');
+            const checks = {
+                'Current URL': window.location.href,
+                'User Agent': navigator.userAgent,
+                'Referrer': document.referrer || 'None',
+                'Protocol': window.location.protocol,
+                'Host': window.location.host,
+                'Pathname': window.location.pathname
+            };
+
+            let html = '<h4>Environment Information:</h4>';
+            for (const [key, value] of Object.entries(checks)) {
+                html += `<div><strong>${key}:</strong> ${value}</div>`;
+            }
+
+            // Check if we can access environment variables (they won't be available in client-side)
+            html += '<h4>Environment Variables (Client-side check):</h4>';
+            html += '<div><em>Note: NEXT_PUBLIC_* variables should be available in client-side code</em></div>';
+            
+            envDiv.innerHTML = html;
+            console.log('Environment check completed');
+        }
+
+        function checkNetwork() {
+            const networkDiv = document.getElementById('network-info');
+            
+            // Check connection
+            const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+            let html = '<h4>Network Information:</h4>';
+            
+            if (connection) {
+                html += `<div><strong>Connection Type:</strong> ${connection.effectiveType || 'Unknown'}</div>`;
+                html += `<div><strong>Downlink:</strong> ${connection.downlink || 'Unknown'} Mbps</div>`;
+            } else {
+                html += '<div>Network API not supported</div>';
+            }
+            
+            html += `<div><strong>Online:</strong> ${navigator.onLine ? 'Yes' : 'No'}</div>`;
+            html += `<div><strong>Cookies Enabled:</strong> ${navigator.cookieEnabled ? 'Yes' : 'No'}</div>`;
+            
+            networkDiv.innerHTML = html;
+            console.log('Network check completed');
+        }
+
+        // Contact form handler
+        document.getElementById('contact-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const resultDiv = document.getElementById('api-result');
+            resultDiv.innerHTML = '<div style="color: #ffd93d;">Testing API...</div>';
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
+            
+            console.log('Sending API request with data:', formData);
+            
+            try {
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                console.log('API Response status:', response.status);
+                console.log('API Response headers:', Object.fromEntries(response.headers.entries()));
+                
+                const data = await response.json();
+                console.log('API Response data:', data);
+                
+                if (response.ok) {
+                    resultDiv.innerHTML = `
+                        <div class="success">
+                            <h4>✅ API Test Successful!</h4>
+                            <pre>${JSON.stringify(data, null, 2)}</pre>
+                        </div>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <div class="error">
+                            <h4>❌ API Test Failed (${response.status})</h4>
+                            <pre>${JSON.stringify(data, null, 2)}</pre>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                console.error('API Test Error:', error);
+                resultDiv.innerHTML = `
+                    <div class="error">
+                        <h4>❌ Network Error</h4>
+                        <div>Error: ${error.message}</div>
+                        <div>This could indicate a network issue, CORS problem, or server error.</div>
+                    </div>
+                `;
+            }
+        });
+
+        // Initialize on page load
+        window.addEventListener('load', function() {
+            console.log('Debug tool loaded successfully');
+            checkEnvironment();
+            checkNetwork();
+        });
+
+        // Add some helpful debug functions to global scope
+        window.debugInfo = {
+            testAPI: () => document.getElementById('contact-form').dispatchEvent(new Event('submit')),
+            checkEnv: checkEnvironment,
+            checkNet: checkNetwork,
+            clearLogs: clearLogs
+        };
+
+        console.log('Debug functions available: window.debugInfo');
+    </script>
+</body>
+</html>
